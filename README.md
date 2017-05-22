@@ -39,7 +39,7 @@ We also need a mongodb instance running in the port 27017 and nodeJS version 6 o
 
 ## Explorer
 
-- You can find the models and try it in https://mrnoow.herokuapp.com/explorer/
+- You can find the models and try it in https://localhost:3000/explorer/
 
 
 ## Testing

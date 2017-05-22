@@ -97,3 +97,81 @@ describe('Saving the request response', () => {
     });
   });
 });
+describe('Mapping and ordering the response info', () => {
+  var responseSaved = //{
+    /*'iati-activities': */[{
+      'iati-activity': {
+        'transaction': [
+          {
+            'provider-org': 'Sida',
+            'value': {
+              'value-date': '2011-12-12',
+              'text': 181400000
+            }
+          }, {
+            'provider-org': {
+              'text': 'Sida'
+            },
+            'value': {
+              'value-date': '2011-10-10',
+              'text': 69583
+            }
+          }
+        ]
+      },
+    }, {
+    'iati-activity': {
+        'transaction': [
+          {
+            'provider-org': {
+              'narrative': 'Sida'
+            },
+            'value': {
+              'value-date': '2010-12-12',
+              'text': 149600000
+            }
+          }, {
+            'provider-org': {
+              'ref': 'UD'
+            },
+            'value': {
+              'value-date': '2010-10-10',
+              'text': 6100000
+            }
+          }, {
+            'provider-org': 'UD',
+            'value': {
+              'value-date': '2010-10-10',
+              'text': 5000
+            }
+          }, {
+            'provider-org': {
+              'narrative': {
+                text: 'Sida'
+              } 
+            },
+            'value': {
+              'value-date': '2010-10-10',
+              'text': 67518
+            }
+          }
+        ]
+      }
+    }];
+  //};
+  var orderedData = {
+    "2011" : {
+      "Sida" : 181469583
+    },
+    "2010" : {
+      "Sida" : 149667518 ,
+      "UD" : 6105000
+    }
+  };
+  it('We receive acorrect mapped and ordered array', (done) => {
+    modelHelpers.mapData(responseSaved, function(err, resultResponse) {
+      expect(resultResponse).to.be.eql(orderedData);
+      done();
+    });
+  });
+});

@@ -105,6 +105,7 @@ function mapData(result, cb) {
   async.each(result, (iaitActivities, cbEach) => {
     if (iaitActivities['iati-activity']) {
       const transactions = iaitActivities['iati-activity'].transaction;
+      console.error(transactions);
       if (transactions && transactions.length > 0) {
         async.each(transactions, (transaction, cbEachTrans) => {
           if (transaction.value && hasOwnProperty(transaction.value, 'value-date')) {
