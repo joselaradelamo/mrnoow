@@ -1,0 +1,34 @@
+{
+  "name": "Colaboration",
+  "plural": "Colaborations",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "country": {
+      "type": "string",
+      "required": true
+    },
+    "data": {
+      "type": "object",
+      "required": true
+    },
+    "updated_at": {
+      "type": "date"
+    },
+    "created_at": {
+      "type": "date"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {},
+  "mixins": {
+    "SetupRemoteMethods": {
+      "disableAllExcept": ["find", "deleteById", "getColaboration", "create", "prototype.updateAttributes"]
+    }    
+  }
+}
